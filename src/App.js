@@ -49,28 +49,38 @@ export default function App() {
       handleStart();
     }
   }
-
-  return (
-    <>
-      <div className={styles.centerMainContent}>
-        <div>
-          <div className={styles.alignTimerCounts}>
-            <h3>
-              hours count: <span>{hours}</span>
-            </h3>
-            <h3>
-              minutes count: <span>{minutes}</span>
-            </h3>
-            <h3>
-              seconds count: <span>{seconds}</span>
-            </h3>
-          </div>
-          <div className={styles.alignTimerButtons}>
-            <button onClick={handleStart}>Start Timer</button>
-            <button onClick={handleStop}>Stop Timer</button>
+  if (seconds == 0 && minutes == 0 && hours == 0) {
+    return (
+      <>
+        <div className={styles.elapsedTimer}>
+          <h1>Congratulations!</h1>
+          <h3>The timer has elapsed.</h3>
+        </div>
+      </>
+    );
+  } else {
+    return (
+      <>
+        <div className={styles.centerMainContent}>
+          <div>
+            <div className={styles.alignTimerCounts}>
+              <h3>
+                hours count: <span>{hours}</span>
+              </h3>
+              <h3>
+                minutes count: <span>{minutes}</span>
+              </h3>
+              <h3>
+                seconds count: <span>{seconds}</span>
+              </h3>
+            </div>
+            <div className={styles.alignTimerButtons}>
+              <button onClick={handleStart}>Start Timer</button>
+              <button onClick={handleStop}>Stop Timer</button>
+            </div>
           </div>
         </div>
-      </div>
-    </>
-  );
+      </>
+    );
+  }
 }
